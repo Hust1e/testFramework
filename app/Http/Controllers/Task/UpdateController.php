@@ -12,6 +12,7 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
         $task->update($data);
+        $request->session()->flash('task.update', "The task updated successfully");
 
         return redirect('/tasks');
     }

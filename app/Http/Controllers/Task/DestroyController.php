@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class DestroyController extends Controller
 {
-    public function __invoke(Task $task)
+    public function __invoke(Request $request, Task $task)
     {
         $task->delete();
+        $request->session()->flash('task.delete', "The task deleted successfully");
         return redirect('/tasks');
     }
 }

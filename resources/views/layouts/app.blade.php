@@ -29,12 +29,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
+                        @auth()
                         <li class="nav-item d-none d-sm-inline-block">
                             <a href="{{ route('task.create') }}" class="nav-link">Create</a>
                         </li>
                         <li class="nav-item d-none d-sm-inline-block">
                             <a href="{{ route('task.completed') }}" class="nav-link">Completed</a>
                         </li>
+                        @endauth
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

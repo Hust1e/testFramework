@@ -20,10 +20,10 @@ class CompletedController extends Controller
         return view('task.completed');
     }
 
-    public function complete(Task $task)
+    public function complete(Request $request, Task $task)
     {
         $task->update(['is_completed' => 1]);
-
-        return view('task.index');
+        $request->session()->flash('task.complete', "The task moved to completed");
+        return redirect('/tasks');
     }
 }
