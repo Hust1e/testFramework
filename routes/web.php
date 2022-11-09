@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', \App\Http\Controllers\Task\IndexController::class)->middleware('auth');
+
 
 Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], function(){
     Route::get('/', \App\Http\Controllers\Task\IndexController::class)->name('task.index');
@@ -25,7 +24,7 @@ Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], function(){
     Route::patch('/{task}', \App\Http\Controllers\Task\UpdateController::class)->name('task.update');
     Route::delete('/{task}', \App\Http\Controllers\Task\DestroyController::class)->name('task.delete');
 
-    Route::get('/{task}/complete', [\App\Http\Controllers\Task\CompletedController::class, 'complete'])->name('task.complete');
+    Route::patch('/{task}/complete', [\App\Http\Controllers\Task\CompletedController::class, 'complete'])->name('task.complete');
     Route::get('/completed', [\App\Http\Controllers\Task\CompletedController::class, 'index'])->name('task.completed');
 });
 

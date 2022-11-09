@@ -1,5 +1,6 @@
 <x-app-layout>
     @section('content')
+        <x-flash-message/>
         @if(isset($tasks))
             <div class="container-sm">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -23,7 +24,9 @@
                                         <form action="{{ route('task.edit', $task->id) }}" method="get">
                                             <input type="submit" class="btn btn-primary" value="Edit">
                                         </form>
-                                        <form action="{{ route('task.complete', $task->id) }}" method="get">
+                                        <form action="{{ route('task.complete', $task->id) }}" method="post">
+                                            @csrf
+                                            @method('patch')
                                             <input type="submit" class="btn btn-success" value="Complete">
                                         </form>
                                         <form action="{{ route('task.delete', $task->id) }}" method="post">

@@ -11,6 +11,7 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         $request->user()->tasks()->create($data);
+        $request->session()->flash('task.create', "The task created successfully");
 
         return redirect('/tasks');
     }
