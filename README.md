@@ -9,29 +9,28 @@ Vite + bootstrap5
 
 Команды для развертки проекта:
 
-docker-compose up
-docker ps
-docker exec -it {id} /bin/sh
-composer install
+`docker-compose up`  
+`docker ps`  
+`docker exec -it {id} /bin/sh`  
+`composer install`  
+`cp .env.example .env`
 
-cp .env.example .env
+Если возникли проблемы с правами:  
+`sudo chmod 775 -R ./`
 
-Если возникли проблемы с правами:
-sudo chmod 775 -R ./
-
-Если возникли проблемы с созданием миграции то в .env стоит поменять:
-DB_HOST=127.0.0.1 на DB_HOST=mysql
+Если возникли проблемы с созданием миграции то в .env стоит поменять:  
+`DB_HOST=127.0.0.1 на DB_HOST=mysql`  
 и перезагрузить контейнеры.
 
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
-sail php artisan migrate
+`alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'`  
+`sail php artisan migrate`
 
-В проекте есть готовые фабрики для заданий и пользователей.
-sail php artisan db:seed
+В проекте есть готовые фабрики для заданий и пользователей.  
+`sail php artisan db:seed`  
 
-Так же для удобства тестирования функционала в фабрике есть готовый пользователь
-email: user@mail.ru
-password: 123
+Так же для удобства тестирования функционала в фабрике есть готовый пользователь  
+`email: user@mail.ru
+password: 123`  
 
-В проекте есть Feature тесты
-sail php artisan test
+В проекте есть Feature тесты  
+`sail php artisan test`
